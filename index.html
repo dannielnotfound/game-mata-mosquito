@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mata mosquito </title>
+    <link rel="stylesheet" href="styles/style.css">
+    <script>
+        function startGame(){
+            const nivel = document.getElementById('selectOption').value
+            if(nivel === ''){
+                alert('Escolha uma dificuldade antes de iniciar o jogo')
+                return false
+            }
+            window.location.href = 'app.html?' + nivel
+
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <img class='bg-img' src="../img/bg.jpg" alt="" srcset="">  
+        <main>
+            <img class='bg-img' src="img/game.png" alt="" srcset="">
+            <select name="chooseDifficult" id="selectOption">
+                <option value=""> -- Selecione o nível --</option>
+                <option value="normal">Normal</option>
+                <option value="dificil">Difícil</option>
+                <option value="chuck">Chuck Norris</option>
+            </select>
+            <button onclick="startGame()" id="start">Iniciar jogo</button>
+        </main>
+    </div>
+</body>
+<script src="index.js"></script>
+</html>
