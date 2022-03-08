@@ -7,10 +7,12 @@
     <title>Document</title>
     <link rel="stylesheet" href="styles/style.css">
 </head>
-<body>
-    <div class="contentApp">
-       <img  class='bg-img' src="../img/bg.jpg" alt="">
+<body onresize="onResizeBody()">
+    <div id="gameBackground" class="contentApp">
+       <img draggable="false" class='bg-img' src="../img/bg.jpg" alt="">
+       <p id="pontos">Pontos: </p>
     </div>
+    
 </body>
 <script src="index.js"></script>
 </html>
