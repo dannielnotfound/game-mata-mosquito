@@ -68,7 +68,7 @@ main{
     object-fit: cover;
 }
 #mosquitinho:hover{
-    cursor: url(../img/mata_mosquito.png) 50 50, auto;
+    cursor: url(../img/mata_mosquito.png) 20 20, auto;
 }
 
 #pontos{
