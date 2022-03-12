@@ -4,6 +4,7 @@ let height = window.innerHeight
 let missedMosquitoes = 0
 let numberOfMosquitos = 0 
 let lives = 3
+let totalOfMistakes = 0 
 console.log('width: ' + width)
 console.log('height: ' + height)
 function onResizeBody(){
@@ -27,6 +28,7 @@ if(nivel ==='normal'){
 /*Lógica para a mecanica dos mosquitos */
 if(nivel){
     const createMosquito = function(){
+        
         /* Soma de todos os mosquitos que apareceram */
         
         numberOfMosquitos += 1
@@ -72,28 +74,61 @@ if(nivel){
             points = 0
             document.getElementById('pontos').innerHTML = 'PONTOS: ' + points
         }
+
+        /* remover
         const gameBackground = document.getElementById('gameBackground')
-        gameBackground.addEventListener('click', resetPoints) 
+        gameBackground.addEventListener('click', resetPoints)
+        */ 
 
-        totalOfClickedMosquitoes = numberOfMosquitos - points
+        totalOfMistakes = numberOfMosquitos - points
+        console.log(totalOfMistakes)
+
         if(numberOfMosquitos >= 10){
-            alert('You missed ' + totalOfClickedMosquitoes + ' mosquitoes ')
+            //  alert('You missed ' + totalOfMistakes + ' mosquitoes ')
+            window.location.href = 'victory.html'
+          }
+          
+          if(totalOfMistakes > 3){
+              window.location.href = 'defeat.html'
+          }
+
+        let teste = numberOfMosquitos - points
+        if(teste == 2){
+            if(document.getElementById('v1')){
+                document.getElementById('v' + 1).remove()
+            }
+            console.log('já excluido')
+        }else if(teste == 3){
+            if(document.getElementById('v2')){
+                document.getElementById('v' + 2).remove()
+            }
+            console.log('já excluido')
+        }else if(teste == 4){
+            if(document.getElementById('v2')){
+                document.getElementById('v' + 2).remove()
+            }
+            console.log('já excluido')
         }
-
-
         document.body.appendChild(mosquito)
+
     }
     setInterval(createMosquito, timeToSpawnMosquitos)
+
+    
     document.getElementById('gameBackground').addEventListener('click', function(){
         missedMosquitoes += 1
         console.log('Missed clicks: ' + missedMosquitoes)
-        if(missedMosquitoes === 3){
-            console.log('FAILED: returning to game ove page')
-            alert('perdeu')
+        let nana = 3 - missedMosquitoes
+        const clicks = document.getElementById('clicksAvailable').innerHTML = nana
+        if(missedMosquitoes > 3){
+            console.log('FAILED: returning to game over page')
             missedMosquitoes = 0 
+            window.location.href = 'defeat.html'
         }
     })
 
+    
+  
 }
 
 
